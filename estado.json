@@ -1,1 +1,44 @@
-{"v":1,"estado":"lobby","nombre":"La Sucesión","dur":7,"dia":0,"host":"","jugadores":{},"dias":{},"epilogo":"","actualizado":""}
+{
+ "v": 1,
+ "estado": "lobby",
+ "nombre": "La Sucesión",
+ "dur": 7,
+ "dia": 0,
+ "host": "patricioromov-ai",
+ "jugadores": {
+  "patricioromov-ai": {
+   "login": "patricioromov-ai",
+   "nombre": "Sammaél",
+   "casa": "vael",
+   "origen": "divino",
+   "rol": "cortesano",
+   "attrs": {
+    "fue": 2,
+    "des": 2,
+    "com": 3,
+    "sab": 3,
+    "psi": 2,
+    "ast": 3,
+    "elo": 1,
+    "enc": 4,
+    "man": 1
+   },
+   "pub": {
+    "kty": "RSA",
+    "n": "zpOjSixdEFYUiyf9C14zJBfOU_OcZVCFjV0tJWxwb9Xu9dlAZQ5PnT6yDuw_Aqf7ZYMF-y-jngfzt-ECV1t4iHW3fzZqNEetNuxUvMMrAEjNt0tQeq9OQHH-8dpd2zmVbRN_su-1uxLDTExoxBlkGklOpRsi33Cfh99wzf4zCTaVGDooS9IwRIvr54B3Y2HAwY8IvOoa7vUHHJ7gPOKaEhayq833koQ88PTa53IWzOtfIeqot1nVsZfBgqcaBSbAzvVP4QkguHe7uIL5ABU7D8y3kZxoHPtptsAFSKZ9TGrGSWQubgVCG_K117IcByYKrRn5aQSomPrCaqf8xG5mbw",
+    "e": "AQAB",
+    "alg": "RSA-OAEP-256",
+    "ext": true,
+    "key_ops": [
+     "encrypt"
+    ]
+   },
+   "blob": "zD+0rsJrGQ4ouot1rUgre/4NNZbbw6Qc2JtoRVL21QlYLxlHu0EMlqhDdjqkqT0xHzEd2df+TbrHJ4e+zkEDr+CxqOSHKyuV8ONm219pjQ1PP2O7eFLOg7EBOh/b6fDiKezoxbfnklskkkNj1r83OYMH1XLydCc6t5xR/nnK4Of4U8s/pZQ+MhXQXVMmQvspfPl+l8gBJojVtvCq9G7IzDDZCBCDyBJF+C4tSx+IfUVNVgOmXA8+XUjIxMZOi4mPlZZUQHFgC5C70RP7Z0/AyuhHeS8XUhjFQf5Qel5r0suqmB4wV6yoq/y5u86nxgZ6VZiih1vnftALtobtiLEcvQ==.7BGrSntyJSFBUyub.wQbRpQUhMDYKNgoNM9w9U4sOGLRue8bSxSwotx5qOtb9VdpGTGSanIfRQZvqvOfmTej3nu98hVGnr4vxwYeQrh9PWSPERiHw+BMKx+FQatSJTiwlwcCCN6XV1OYCLRUu+Mssze6GT9alSidgPVbtTpWDkCONyCnJO4Ld40gqE3bCo9cq878et5jqeheo+DPiagk/STC+9+JVGq31cgUizsZS8Z5pxQ==",
+   "actuo": false,
+   "inf": 4
+  }
+ },
+ "dias": {},
+ "epilogo": "",
+ "actualizado": "2026-09-19T22:08:22.219Z"
+}
