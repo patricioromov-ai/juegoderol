@@ -2,6 +2,6 @@
   "nombre": "La Sucesión",
   "dur": 7,
   "repo": "TU_USUARIO/neon-y-ceniza",
-  "permitidos": [],
+  "permitidos": ["patricioromov-ai"],
   "clavePublica": {"alg":"RSA-OAEP-256","e":"AQAB","ext":true,"key_ops":["encrypt"],"kty":"RSA","n":"xpDqDNXCj6JS2QiyQISd5xiidGD5LmSIBbozTOQgBfdeq4-rUSu-3vyB-a50TC0Ww5KGdkU25zdrdpIX9u5-wACMMQET-lUg0rTxKOGcD9Kxsim0PDa1DoOZz9p9WgGxANmz7A3K9-GtHCLj2a8h0CPXKl1APqeIbGWHOpWjOQPQLWCEpPacSQbp_45Z6c6-EXRCW2q_v4t7bZExvXLGqWbHXHGIueSGhHZTDbuiBowJB_FIWh6xE4hMQuqQ5M1B2d27Oarb6n0jkqY7L6bhnNHN987c9iYFGeNqE0qPbyT72b4LrkMgUiQTq0WH09QRJndF-pZHuhlYauQVaox4SQ"}
 }
