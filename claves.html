@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Llaves del director de juego</title>
+<style>
+:root{--bg:#e4e6ef;--surface:#eef0f7;--ink:#14152b;--muted:#565a78;--line:#b5b9d0;--accent:#2b3a9c;--on-accent:#f1f2fb;--gold:#7d5f0e;--bad:#a3283c;}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0f1d;--surface:#171933;--ink:#e9e4d4;--muted:#9a9dbb;--line:#2a2d55;--accent:#8e8fff;--on-accent:#0e0f26;--gold:#d8b45c;--bad:#ee7b8c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 Georgia,'Times New Roman',serif;}
+main{max-width:640px;margin:0 auto;padding:20px 18px 60px}
+h1{font-weight:400;font-size:2rem;margin:0 0 6px}
+h2{font-weight:400;font-size:1.3rem;margin:26px 0 6px;color:var(--gold)}
+p{margin:0 0 .9em}
+.nota{font:.95rem system-ui,sans-serif;color:var(--muted)}
+.aviso{font:.95rem system-ui,sans-serif;color:var(--bad)}
+textarea{width:100%;min-height:150px;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:3px;padding:10px}
+button{font:600 1rem system-ui,sans-serif;min-height:48px;padding:10px 20px;border:1.5px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:3px;cursor:pointer;margin:8px 8px 0 0}
+button.sec{background:transparent;color:var(--ink);border-color:var(--ink)}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<h1>Llaves del director de juego</h1>
+<p>Esta página crea un par de llaves de cifrado <b>en tu navegador</b>. No se envía nada a ningún servidor. La llave pública va en <code>config.json</code>; la llave privada va como secreto <code>CLAVE_PRIVADA</code> del repositorio. Con ellas, los objetivos secretos de los jugadores viajan cifrados aunque el repositorio sea público.</p>
+<button id="gen">Generar llaves</button>
+<p id="err" class="aviso" role="status"></p>
+<div id="salida" hidden>
+  <h2>1. Llave pública</h2>
+  <p class="nota">Pégala en <code>config.json</code>, en el campo <code>"clavePublica"</code>, reemplazando <code>null</code>.</p>
+  <textarea id="pub" readonly aria-label="Llave pública"></textarea>
+  <button class="sec" data-copiar="pub">Copiar llave pública</button>
+  <h2>2. Llave privada</h2>
+  <p class="nota">Pégala en Settings, Secrets and variables, Actions, New repository secret, con el nombre <code>CLAVE_PRIVADA</code>. <b>No la compartas ni la subas al repositorio.</b> Guárdala también en un lugar seguro: si la pierdes, la campaña actual no se puede recuperar.</p>
+  <textarea id="priv" readonly aria-label="Llave privada"></textarea>
+  <button class="sec" data-copiar="priv">Copiar llave privada</button>
+</div>
+<script src="cripto.js"></script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  $('gen').addEventListener('click',async()=>{
+    $('err').textContent='';
+    try{
+      const par=await Cripto.generarPar();
+      $('pub').value=JSON.stringify(par.publica);
+      $('priv').value=JSON.stringify(par.privada);
+      $('salida').hidden=false;
+    }catch(e){$('err').textContent='No se pudieron generar las llaves: '+e.message+'. Abre esta página desde el sitio publicado (https).';}
+  });
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-copiar]');if(!b)return;
+    const t=$(b.dataset.copiar);t.select();
+    try{await navigator.clipboard.writeText(t.value);b.textContent='Copiado';}catch(x){document.execCommand&&document.execCommand('copy');b.textContent='Copiado';}
+  });
+})();
+</script>
+</main>
+</body>
+</html>

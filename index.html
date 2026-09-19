@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neón y Ceniza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Chakra+Petch:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4e6ef; --surface:#eef0f7; --ink:#14152b; --muted:#565a78; --line:#b5b9d0;
+  --accent:#2b3a9c; --on-accent:#f1f2fb; --gold:#7d5f0e; --seal:#a3283c; --on-seal:#f7ecee; --good:#1f5d4f; --bad:#a3283c;
+  --glow:transparent;
+  --serif:'Alegreya',Georgia,'Times New Roman',serif;
+  --ui:'Chakra Petch',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --display:'IM Fell English',Georgia,'Times New Roman',serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0f1d; --surface:#171933; --ink:#e9e4d4; --muted:#9a9dbb; --line:#2a2d55;
+    --accent:#8e8fff; --on-accent:#0e0f26; --gold:#d8b45c; --seal:#c04357; --on-seal:#faeff1; --good:#6fd1b8; --bad:#ee7b8c; --glow:#8e8fff;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0f1d; --surface:#171933; --ink:#e9e4d4; --muted:#9a9dbb; --line:#2a2d55;
+  --accent:#8e8fff; --on-accent:#0e0f26; --gold:#d8b45c; --seal:#c04357; --on-seal:#faeff1; --good:#6fd1b8; --bad:#ee7b8c; --glow:#8e8fff;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55;min-height:100%;-webkit-text-size-adjust:100%;}
+[hidden]{display:none !important;}
+.wrap{max-width:560px;margin:0 auto;padding:18px 18px 48px;}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;}
+h1{font-size:clamp(3rem,15vw,4.6rem);letter-spacing:-.01em;text-shadow:0 0 22px var(--glow);animation:parpadeo 1.6s steps(1,end) 1;}
+h2{font-size:1.9rem;margin:6px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--gold);}
+h3{font-size:1.35rem;margin:26px 0 8px;}
+h3.grupo{font-size:1.15rem;margin:22px 0 2px;color:var(--gold);}
+p{margin:0 0 .9em;}
+.sub{font-family:var(--ui);font-size:.92rem;color:var(--muted);line-height:1.35;display:block;margin-top:2px;}
+.nota{font-family:var(--ui);font-size:.95rem;color:var(--muted);}
+.paso{font-family:var(--ui);font-size:.95rem;color:var(--muted);margin:0 0 4px;}
+em{font-style:italic;}
+@keyframes parpadeo{0%{opacity:.2}8%{opacity:1}14%{opacity:.35}22%{opacity:1}30%{opacity:.6}38%,100%{opacity:1}}
+
+.btn{font-family:var(--ui);font-weight:600;font-size:1rem;min-height:48px;padding:10px 20px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:3px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.btn.sm{min-height:44px;min-width:44px;padding:6px 12px;}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.btn:focus-visible,.row:focus-visible,.inp:focus-visible,textarea:focus-visible,input[type=checkbox]:focus-visible,.tab:focus-visible,.chipb:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.nav,.acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+.nav .primary,.acciones .primary{flex:1;}
+
+.lista{border-bottom:1px solid var(--line);}
+.row{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:transparent;color:var(--ink);border:0;border-top:1px solid var(--line);padding:14px 8px 14px 12px;font:inherit;cursor:pointer;border-left:4px solid transparent;}
+.row b{font-family:var(--ui);font-size:1.02rem;font-weight:600;}
+.row[aria-pressed="true"]{background:var(--surface);border-left-color:var(--gold);}
+.row:disabled{opacity:.45;cursor:not-allowed;}
+.row.block{display:block;}
+.bono{color:var(--accent) !important;}
+.opc .ot{display:block;font-size:1.08rem;}
+.opc .om{display:block;font-family:var(--ui);font-size:.9rem;color:var(--muted);margin-top:2px;}
+.opc.poder{border-left-color:var(--accent);}
+.grid{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0;}
+.chipb{font-family:var(--ui);font-weight:600;font-size:.92rem;min-height:44px;padding:6px 12px;border:1.5px solid var(--line);border-radius:3px;background:transparent;color:var(--ink);cursor:pointer;}
+.chipb[aria-pressed="true"]{border-color:var(--gold);background:var(--surface);}
+.chipb:disabled{opacity:.4;cursor:not-allowed;}
+
+.lbl{font-family:var(--ui);font-weight:600;display:block;margin:10px 0 6px;}
+.inp,textarea{width:100%;font:inherit;font-size:1.1rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:3px;padding:12px;}
+textarea{resize:vertical;min-height:88px;}
+
+.attr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);}
+.attr .an b{font-family:var(--ui);font-weight:600;}
+.ctr{display:flex;align-items:center;gap:8px;}
+.ctr output{font-family:var(--ui);font-weight:700;font-size:1.25rem;min-width:1.6rem;text-align:center;}
+.radar{display:block;width:100%;max-width:400px;margin:8px auto 4px;}
+
+.seal{flex:none;display:block;filter:drop-shadow(0 0 6px var(--glow));}
+.ficha .fh{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+.ficha h3{margin:0;}
+.dl{margin:10px 0 0;}
+.dl dt{font-family:var(--ui);font-weight:600;margin-top:12px;color:var(--gold);}
+.dl dd{margin:2px 0 0;}
+
+.hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--gold);}
+.hud-in{max-width:560px;margin:0 auto;padding:10px 18px;}
+.quien{display:flex;gap:10px;align-items:center;}
+.quien div{flex:1;min-width:0;line-height:1.2;}
+.quien b{font-family:var(--ui);font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.quien .sub{font-size:.85rem;margin-top:0;}
+.dia{font-family:var(--display);font-size:1.1rem;text-align:right;}
+.res{display:grid;grid-template-columns:repeat(var(--n,6),1fr);gap:8px;margin-top:8px;}
+.rr{font-family:var(--ui);line-height:1.15;min-width:0;}
+.rr span{font-size:.78rem;color:var(--muted);display:block;white-space:nowrap;}
+.rr b{font-size:1.05rem;font-weight:600;}
+.bar{display:block;position:relative;height:5px;background:var(--line);border-radius:2px;margin-top:3px;}
+.bar s{display:block;height:100%;background:var(--accent);border-radius:2px;text-decoration:none;box-shadow:0 0 8px var(--glow);}
+.rr.meta .bar::after{content:'';position:absolute;left:80%;top:-3px;bottom:-3px;width:2px;background:var(--seal);}
+.rr.vig .bar s{background:var(--seal);}
+.metaTxt{font-family:var(--ui);font-size:.82rem;color:var(--muted);margin-top:6px;}
+
+.tabs{display:flex;border-bottom:1px solid var(--line);margin:0 0 18px;}
+.tab{flex:1;font-family:var(--ui);font-weight:600;font-size:.98rem;min-height:48px;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);cursor:pointer;padding:8px 4px;}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold);}
+
+.inicio{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:18px;}
+.inicio p.lema{font-size:1.2rem;font-style:italic;max-width:32ch;margin:0;}
+.sellos{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0;}
+
+.dado{font-family:var(--display);font-size:3rem;line-height:1;min-width:4rem;height:4rem;display:flex;align-items:center;justify-content:center;border:2px solid var(--gold);border-radius:8px;background:var(--surface);}
+.tirada{display:flex;gap:16px;align-items:center;margin:10px 0 14px;}
+.calc{font-family:var(--ui);margin:0;}
+.veredicto{font-family:var(--display);font-size:1.6rem;margin:0 0 6px;}
+.veredicto.ok{color:var(--good);} .veredicto.no{color:var(--bad);}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px;}
+.chip{font-family:var(--ui);font-weight:600;font-size:.95rem;border:1.5px solid currentColor;border-radius:3px;padding:2px 10px;}
+.chip.plus{color:var(--good);} .chip.minus{color:var(--bad);} .chip.xp{color:var(--muted);}
+.linea{margin:0 0 12px;}
+.linea b{font-family:var(--ui);font-weight:600;font-size:.95rem;display:block;}
+.linea p{margin:2px 0 0;}
+.aviso{font-family:var(--ui);color:var(--bad);margin:10px 0 0;}
+.vida{border-top:2px solid var(--gold);border-bottom:1px solid var(--line);padding:4px 0 10px;margin:20px 0;}
+.vida h3{margin-top:14px;}
+.spin{font-family:var(--ui);color:var(--muted);}
+.jug{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);}
+.jug:last-child{border-bottom:1px solid var(--line);}
+.jug .jn{flex:1;min-width:0;}
+.jug b{font-family:var(--ui);font-weight:600;display:block;}
+.estado{font-family:var(--ui);font-size:.9rem;font-weight:600;}
+.estado.ok{color:var(--good);} .estado.pend{color:var(--muted);}
+.escena{border-left:3px solid var(--gold);padding-left:14px;margin:14px 0 18px;}
+.cron{border-top:1px solid var(--line);padding-top:6px;margin-top:18px;}
+.priv{font-family:var(--ui);font-size:.95rem;color:var(--ink);background:var(--surface);border-left:3px solid var(--accent);padding:8px 12px;margin:8px 0;}
+.priv .sub{margin:0 0 2px;}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85em;background:var(--surface);padding:1px 5px;border-radius:3px;}
+
+@media (prefers-reduced-motion: reduce){ *{animation:none !important;transition:none !important;} }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript><div class="wrap"><p>Este juego necesita JavaScript.</p></div></noscript>
+<script src="datos.js"></script>
+<script src="cripto.js"></script>
+<script>
+(function(){
+'use strict';
+const {REC,REC_C,RKEYS,ATR,ATR_ORDEN,GRUPOS,CASAS,POD,ORIGENES,ROLES,SOC,OBJ,INT,INT_TXT,POSTURAS,posturaPoder,A,bonoRolDe,puntosTotal,calcRec,podsDe,validaPersonaje,clamp,sum}=NC;
+
+/* ---------- utilidades ---------- */
+const $app=document.getElementById('app');
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=t=>esc(t).replace(/\*([^*\n]+)\*/g,'<em>$1</em>').replace(/\n+/g,'<br>');
+const paras=t=>String(t||'').split(/\n+/).filter(Boolean).map(p=>'<p>'+fmt(p)+'</p>').join('');
+const lsGet=k=>{try{const t=localStorage.getItem(k);return t?JSON.parse(t):null;}catch(e){return null;}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
+
+/* ---------- estado del cliente ---------- */
+const K_LOGIN='ncgh-login',K_PAR='ncgh-par';
+let CFG=null,ST=null,PRIV=null,privDe='',etag=null,estadoTxt='';
+const ME={login:lsGet(K_LOGIN)||'',par:lsGet(K_PAR)||null};
+const UI={pantalla:'inicio',tab:'hoy',err:'',info:'',accion:null,accionDia:'',envio:null,cargando:false,cargado:false,errKey:false,verLlave:false,confReinicio:false,loginTmp:''};
+let CR=nuevoCR();
+function nuevoCR(){return {paso:1,nombre:'',casa:null,origen:null,rol:null,attrs:{fue:1,des:1,com:1,sab:1,psi:1,ast:1,elo:1,enc:1,man:1},soc:null,obj:null};}
+function nuevaAccion(){return {sel:null,texto:'',attr:'ast',obj:null,int:null,poder:null,postura:'golpe'};}
+const lg=()=>String(ME.login||'').trim().toLowerCase();
+const yo=()=>ST&&lg()?(ST.jugadores[lg()]||null):null;
+const esHost=()=>!!(ST&&lg()&&lg()===String(ST.host||'').toLowerCase());
+const jugadores=()=>Object.keys(ST.jugadores).map(k=>ST.jugadores[k]);
+const nivelDe=xp=>1+Math.floor((xp||0)/50);
+function repo(){
+  if(CFG&&CFG.repo&&String(CFG.repo).indexOf('TU_USUARIO')<0)return CFG.repo;
+  const m=location.hostname.match(/^([^.]+)\.github\.io$/);
+  if(m){const n=location.pathname.split('/')[1];return m[1]+'/'+(n||m[1]+'.github.io');}
+  return null;
+}
+/* datos secretos míos, ya descifrados, combinados con lo público */
+function miPj(){
+  const j=yo();if(!j)return null;
+  return Object.assign({},j,{soc:PRIV&&PRIV.soc,obj:PRIV&&PRIV.obj});
+}
+
+/* ---------- red ---------- */
+async function getJSON(u){
+  const r=await fetch(u+(u.indexOf('?')<0?'?':'&')+'t='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return r.json();
+}
+async function estadoRemoto(){
+  const r0=repo();
+  if(r0){
+    try{
+      const h={accept:'application/vnd.github.raw+json'};if(etag)h['if-none-match']=etag;
+      const r=await fetch('https://api.github.com/repos/'+r0+'/contents/estado.json',{headers:h});
+      if(r.status===304&&ST)return ST;
+      if(r.ok){etag=r.headers.get('etag');return JSON.parse(await r.text());}
+    }catch(e){}
+  }
+  return getJSON('estado.json');
+}
+async function descifrarMio(){
+  const j=yo();
+  if(!j||!j.blob){PRIV=null;privDe='';UI.errKey=false;return;}
+  if(!ME.par){PRIV=null;privDe='';UI.errKey=true;return;}
+  if(j.blob===privDe)return;
+  try{PRIV=await Cripto.descifrar(ME.par.privada,j.blob);privDe=j.blob;UI.errKey=false;}
+  catch(e){PRIV=null;privDe='';UI.errKey=true;}
+}
+/* limpia el aviso "envía en GitHub" cuando el juego ya procesó lo enviado */
+function resolverEnvio(){
+  const e=UI.envio;if(!e||!ST)return;
+  const j=yo();let listo=false;
+  if(e.tipo==='unirse')listo=!!j;
+  else if(e.tipo==='accion')listo=(j&&j.actuo&&ST.dia===e.dia)||ST.dia>e.dia||ST.estado==='fin';
+  else if(e.tipo==='comenzar')listo=ST.estado!=='lobby';
+  else if(e.tipo==='cerrar')listo=ST.dia>e.dia||ST.estado==='fin';
+  else if(e.tipo==='reiniciar')listo=ST.estado==='lobby'&&ST.dia===0&&!Object.keys(ST.jugadores).length;
+  if(listo){UI.envio=null;if(e.tipo==='unirse'&&UI.pantalla!=='crear')UI.pantalla='camp';}
+}
+async function cargar(){
+  if(UI.cargando)return;UI.cargando=true;
+  try{
+    if(!CFG)CFG=await getJSON('config.json');
+    const nuevo=await estadoRemoto();
+    const txt=JSON.stringify(nuevo);
+    const cambio=txt!==estadoTxt||!UI.cargado;
+    ST=nuevo;estadoTxt=txt;UI.cargado=true;
+    await descifrarMio();
+    const antes=UI.envio;resolverEnvio();
+    if(UI.err&&UI.err.indexOf('No pude leer el estado')===0)UI.err='';
+    if(UI.pantalla!=='crear'&&(cambio||antes!==UI.envio))render();
+  }catch(e){
+    UI.err='No pude leer el estado de la campaña. Revisa tu conexión y vuelve a intentarlo.';
+    if(UI.pantalla!=='crear')render();
+  }
+  UI.cargando=false;
+}
+
+/* ---------- envío a GitHub (incidencias) ---------- */
+function cuerpoIssue(payload){
+  return 'Esta incidencia la procesa el director de juego automáticamente. No cambies el texto: solo toca «Submit new issue».\n\n```json\n'+JSON.stringify(payload)+'\n```\n';
+}
+function crearEnvio(titulo,payload,meta){
+  const r=repo();
+  if(!r){UI.err='No sé en qué repositorio está el juego. Completa el campo "repo" en config.json.';render();return;}
+  const url='https://github.com/'+r+'/issues/new?title='+encodeURIComponent(titulo)+'&body='+encodeURIComponent(cuerpoIssue(payload));
+  if(url.length>7500){UI.err='La jugada es demasiado larga. Acórtala e inténtalo de nuevo.';render();return;}
+  UI.envio=Object.assign({url,titulo},meta);UI.err='';render();window.scrollTo(0,0);
+}
+function vEnvio(){
+  const e=UI.envio;if(!e)return '';
+  return '<div class="vida"><h3>Un último paso en GitHub</h3>'+
+    '<p>Toca el botón y, en GitHub, pulsa <b>Submit new issue</b>. Debes tener la sesión iniciada como <b>'+esc(ME.login)+'</b>. El director de juego la procesa en uno o dos minutos y esta página se actualiza sola.</p>'+
+    '<div class="acciones" style="margin-top:0"><a class="btn primary" href="'+esc(e.url)+'" target="_blank" rel="noopener">Abrir GitHub y enviar</a><button class="btn" data-act="cancelarEnvio">Cancelar</button></div></div>';
+}
+
+/* ---------- componentes visuales ---------- */
+function seal(id,size){
+  const c=CASAS[id];
+  return '<svg class="seal" viewBox="0 0 48 48" width="'+size+'" height="'+size+'" aria-hidden="true">'+
+    '<circle cx="24" cy="24" r="23" style="fill:var(--seal)"/>'+
+    '<circle cx="24" cy="24" r="20" style="fill:none;stroke:var(--gold);stroke-width:1.2"/>'+
+    '<g transform="translate(6 6) scale(.75)" style="fill:none;stroke:var(--on-seal);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round">'+c.glyph+'</g></svg>';
+}
+function radar(a){
+  const n=ATR_ORDEN.length,cx=150,cy=150,R=92,MAX=6;
+  const ang=i=>-Math.PI/2+i*2*Math.PI/n;
+  const pt=(i,v,rr)=>{const r=rr!==undefined?rr:R*v/MAX;return [cx+r*Math.cos(ang(i)),cy+r*Math.sin(ang(i))];};
+  const f=x=>x.toFixed(1);
+  let out='';
+  [2,4,6].forEach(v=>{out+='<polygon points="'+ATR_ORDEN.map((k,i)=>pt(i,v).map(f).join(',')).join(' ')+'" style="fill:none;stroke:var(--line);stroke-width:1"/>';});
+  ATR_ORDEN.forEach((k,i)=>{const p=pt(i,MAX);out+='<line x1="'+cx+'" y1="'+cy+'" x2="'+f(p[0])+'" y2="'+f(p[1])+'" style="stroke:var(--line);stroke-width:1"/>';});
+  out+='<polygon points="'+ATR_ORDEN.map((k,i)=>pt(i,a[k]).map(f).join(',')).join(' ')+'" style="fill:var(--accent);fill-opacity:.25;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round"/>';
+  ATR_ORDEN.forEach((k,i)=>{
+    const p=pt(i,a[k]);out+='<circle cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="3.5" style="fill:var(--accent)"/>';
+    const l=pt(i,0,R+14),cs=Math.cos(ang(i));
+    const anc=Math.abs(cs)<.25?'middle':(cs>0?'start':'end');
+    out+='<text x="'+f(l[0])+'" y="'+f(l[1]+4)+'" text-anchor="'+anc+'" style="font:600 12.5px var(--ui);fill:var(--ink)">'+ATR[k].n+' '+a[k]+'</text>';
+  });
+  return '<svg class="radar" viewBox="-60 -20 420 330" role="img" aria-label="Atributos: '+ATR_ORDEN.map(k=>ATR[k].n+' '+a[k]).join(', ')+'">'+out+'</svg>';
+}
+function chips(c){
+  let h='';
+  for(const k in c)if(c[k])h+='<span class="chip '+(c[k]>0?'plus':'minus')+'">'+(c[k]>0?'+':'−')+Math.abs(c[k])+' '+REC[k]+'</span>';
+  return h;
+}
+const totales=p=>{const t={};ATR_ORDEN.forEach(k=>{t[k]=A(k,p);});return t;};
+const hudKeys=p=>RKEYS.filter(k=>k!=='eter'||podsDe(p).length);
+const bonoTxt=b=>Object.keys(b).map(k=>'+'+b[k]+' '+REC[k]).join(', ');
+const errHtml=()=>UI.err?'<p class="aviso" role="status">'+esc(UI.err)+'</p>':'';
+const infoHtml=()=>UI.info?'<p class="nota" role="status">'+esc(UI.info)+'</p>':'';
+
+function vHud(){
+  const me=yo();if(!me)return '';
+  const rec=PRIV&&PRIV.rec,o=PRIV&&PRIV.obj?OBJ[PRIV.obj]:null,ks=hudKeys(me);
+  const dia=ST.estado==='abierto'?'Día '+ST.dia+' de '+ST.dur:(ST.estado==='fin'?'Final':'Sala');
+  return '<header class="hud"><div class="hud-in"><div class="quien">'+seal(me.casa,34)+
+    '<div><b>'+esc(me.nombre)+'</b><span class="sub">'+ROLES[me.rol].n+' de la Casa '+CASAS[me.casa].n+'</span></div><span class="dia">'+dia+'</span></div>'+
+    '<div class="res" style="--n:'+ks.length+'">'+ks.map(k=>
+      '<div class="rr'+(o&&o.res===k?' meta':'')+(k==='vig'?' vig':'')+'" title="'+REC[k]+'"><span>'+REC_C[k]+'</span><b>'+(rec?rec[k]:'–')+'</b><i class="bar"><s style="width:'+(rec?rec[k]*10:0)+'%"></s></i></div>').join('')+'</div>'+
+    (o&&rec?'<div class="metaTxt">Meta secreta: '+REC[o.res]+' en '+o.meta+' (marca roja). Vas en '+rec[o.res]+'.</div>':'')+'</div></header>';
+}
+function vFicha(p,rec){
+  const ro=ROLES[p.rol],c=CASAS[p.casa],o=p.obj?OBJ[p.obj]:null,og=ORIGENES[p.origen],so=p.soc?SOC[p.soc]:null;
+  return '<div class="ficha"><div class="fh">'+seal(p.casa,64)+'<div><h3>'+esc(p.nombre||'Sin nombre')+'</h3><span class="sub">'+ro.n+' de la Casa '+c.n+', '+og.n.toLowerCase()+'</span></div></div>'+
+    radar(totales(p))+
+    '<dl class="dl"><dt>Poderes</dt><dd>'+(og.pods.length?og.pods.map(id=>'<b>'+POD[id].n+'</b> ('+ATR[POD[id].attr].n+', '+POD[id].coste+' Éter): '+POD[id].d).join('<br>'):'Ninguno. Tu poder son tus decisiones.')+'</dd>'+
+    '<dt>Ventaja del cargo</dt><dd>'+ro.ventaja+'</dd>'+
+    '<dt>Costo del cargo</dt><dd>'+ro.caidaTxt+'</dd>'+
+    (og.pods.length?'<dt>Costo del origen</dt><dd>'+og.caida+'</dd>':'')+
+    (so?'<dt>Sociedad secreta</dt><dd>'+so.n+'</dd>':'')+
+    (o?'<dt>Objetivo secreto</dt><dd>'+o.n+': llegar a '+o.meta+' de '+REC[o.res]+'.</dd>':'')+
+    (rec?'<dt>Recursos</dt><dd>'+hudKeys(p).map(k=>REC[k]+' '+rec[k]).join(', ')+'</dd>':'')+'</dl></div>';
+}
+
+/* ---------- pantallas ---------- */
+function vInicio(){
+  if(!CFG||!ST){
+    return '<main class="wrap inicio"><h1>Neón y Ceniza</h1><p class="spin" role="status">'+(UI.err?'':'Cargando la campaña...')+'</p>'+errHtml()+
+      (UI.err?'<div class="acciones"><button class="btn primary" data-act="refrescar">Reintentar</button></div>':'')+'</main>';
+  }
+  const j=yo(),perm=(CFG.permitidos||[]).map(x=>String(x).toLowerCase());
+  let h='<main class="wrap inicio"><h1>Neón y Ceniza</h1>'+
+    '<p class="lema">Una campaña compartida. Claude dirige el mundo y la historia cambia según lo que hagan tú y los demás jugadores.</p>'+
+    '<div class="sellos">'+Object.keys(CASAS).map(id=>seal(id,38)).join('')+'</div>'+errHtml();
+  if(!CFG.clavePublica){
+    return h+'<div class="vida"><h3>Falta configurar el juego</h3><p>El anfitrión aún no puso la llave del director en <code>config.json</code>. Sigue el README del repositorio y vuelve.</p></div></main>';
+  }
+  if(!ME.login){
+    return h+'<label class="lbl" for="login">Tu usuario de GitHub</label><input id="login" class="inp" data-keep maxlength="39" autocomplete="off" autocapitalize="none" placeholder="por ejemplo, patricio" value="'+esc(UI.loginTmp)+'">'+
+      '<p class="nota">Es tu identidad en el juego. Debes tener una cuenta gratuita de GitHub para enviar tus jugadas.</p>'+
+      '<div class="acciones"><button class="btn primary" data-act="guardarLogin">Continuar</button></div></main>';
+  }
+  h+='<p class="nota">Juegas como <b>@'+esc(ME.login)+'</b>. Campaña: <b>'+esc(ST.nombre)+'</b>, '+(ST.estado==='lobby'?'en la sala':(ST.estado==='fin'?'terminada':'día '+ST.dia+' de '+ST.dur))+'.</p>';
+  if(!j&&perm.length&&perm.indexOf(lg())<0)h+='<p class="aviso">Tu usuario no está en la lista de jugadores permitidos. Pídele al anfitrión que lo agregue a <code>config.json</code>.</p>';
+  h+='<div class="acciones">'+
+    (j?'<button class="btn primary" data-act="entrarCamp">Continuar con '+esc(j.nombre)+'</button>':
+      (ST.estado==='fin'?'':'<button class="btn primary" data-act="nuevoPj">Crear mi personaje</button>'))+
+    '<button class="btn" data-act="cambiarLogin">Cambiar usuario</button></div></main>';
+  return h;
+}
+
+/* creación de personaje (igual que en la versión en línea) */
+function valido(n){
+  const p=CR;
+  if(n===1)return p.nombre.trim().length>=2&&!!p.casa;
+  if(n===2)return !!p.origen;
+  if(n===3)return !!p.rol;
+  if(n===4)return sum(p.attrs)-9===puntosTotal(p);
+  if(n===5)return !!p.soc&&!!p.obj;
+  return true;
+}
+function vCrear(){
+  const p=CR,n=p.paso;let h='';
+  if(n===1){
+    h='<h2>¿Quién eres?</h2><label class="lbl" for="nombre">Nombre de tu personaje</label>'+
+      '<input id="nombre" class="inp" data-keep type="text" maxlength="24" autocomplete="off" value="'+esc(p.nombre)+'" placeholder="Por ejemplo, Isaura Vane">'+
+      '<h3>Tu Casa</h3><div class="lista">'+Object.keys(CASAS).map(id=>{
+        const c=CASAS[id],s=p.casa===id;
+        return '<button class="row" data-act="casa" data-v="'+id+'" aria-pressed="'+s+'">'+seal(id,44)+
+          '<span><b>Casa '+c.n+'</b><span class="sub">'+c.animal+', '+c.gremio.toLowerCase()+'. «'+c.lema+'»</span>'+
+          (s?'<span class="sub bono">Ventaja de Casa: '+bonoTxt(c.bono)+' al comenzar.</span>':'')+'</span></button>';
+      }).join('')+'</div>';
+  }else if(n===2){
+    h='<h2>Tu origen</h2><p>Qué corre por tus venas o por tus circuitos. Define tus poderes y lo que te cuestan.</p><div class="lista">'+
+      Object.keys(ORIGENES).map(id=>{
+        const o=ORIGENES[id],s=p.origen===id;
+        return '<button class="row block" data-act="origen" data-v="'+id+'" aria-pressed="'+s+'"><b>'+o.n+'</b><span class="sub">'+o.d+'</span>'+
+          (s?(o.pods.length?'<span class="sub bono">Bonos: '+Object.keys(o.attr).map(k=>'+'+o.attr[k]+' '+ATR[k].n).join(', ')+'. Éter inicial '+o.eter+'.</span>'+
+            o.pods.map(pid=>'<span class="sub"><b>'+POD[pid].n+'</b> ('+ATR[POD[pid].attr].n+', '+POD[pid].coste+' Éter): '+POD[pid].d+'</span>').join('')+
+            '<span class="sub">'+o.caida+'</span>':'<span class="sub bono">Sin poderes, pero con más puntos y más créditos.</span>'):'')+'</button>';
+      }).join('')+'</div>';
+  }else if(n===3){
+    h='<h2>Tu cargo</h2><p>Cómo juegas: qué recursos tienes al comenzar, qué atributo se te da mejor y qué te cuesta cuando fallas.</p><div class="lista">'+
+      Object.keys(ROLES).map(id=>{
+        const r=ROLES[id],s=p.rol===id;
+        return '<button class="row block" data-act="rol" data-v="'+id+'" aria-pressed="'+s+'"><b>'+r.n+'</b><span class="sub">'+r.d+'</span>'+
+          (s?'<span class="sub bono">'+r.ventaja+'</span><span class="sub">'+r.caidaTxt+'</span>':'')+'</button>';
+      }).join('')+'</div>';
+  }else if(n===4){
+    const total=puntosTotal(p),quedan=total-(sum(p.attrs)-9),og=ORIGENES[p.origen];
+    h='<h2>Tus atributos</h2><p>Reparte '+total+' puntos entre nueve atributos. Cada uno parte en 1 y llega hasta 5 (tu origen puede sumar más). Te quedan <b>'+quedan+'</b>.</p>'+radar(totales(p))+
+      GRUPOS.map(g=>'<h3 class="grupo">'+g+'</h3>'+ATR_ORDEN.filter(k=>ATR[k].g===g).map(k=>{
+        const b=og.attr[k]||0;
+        return '<div class="attr"><div class="an"><b>'+ATR[k].n+'</b><span class="sub">'+ATR[k].d+'</span>'+(b?'<span class="sub bono">+'+b+' por tu origen</span>':'')+'</div><div class="ctr">'+
+          '<button class="btn sm" data-act="attr" data-v="'+k+':-1" aria-label="Bajar '+ATR[k].n+'"'+(p.attrs[k]<=1?' disabled':'')+'>−</button>'+
+          '<output aria-live="polite">'+A(k,p)+'</output>'+
+          '<button class="btn sm" data-act="attr" data-v="'+k+':1" aria-label="Subir '+ATR[k].n+'"'+(p.attrs[k]>=5||quedan<=0?' disabled':'')+'>+</button></div></div>';
+      }).join('')).join('')+
+      '<p class="nota" style="margin-top:14px">Tu cargo de '+ROLES[p.rol].n.toLowerCase()+' suma +1 a '+ATR[ROLES[p.rol].attr].n+' en las tiradas.</p>';
+  }else if(n===5){
+    h='<h2>Tus secretos</h2><h3 class="grupo">Sociedad secreta</h3><div class="lista">'+
+      Object.keys(SOC).map(id=>{
+        const s=SOC[id],sel=p.soc===id;
+        return '<button class="row block" data-act="soc" data-v="'+id+'" aria-pressed="'+sel+'"><b>'+s.n+'</b><span class="sub">'+s.d+'</span>'+(sel?'<span class="sub bono">Ventaja: '+bonoTxt(s.rec)+' al comenzar.</span>':'')+'</button>';
+      }).join('')+'</div>'+
+      '<h3 class="grupo">Objetivo secreto</h3><p class="nota">Solo tú y el director de juego lo conocen. Viaja cifrado: nadie más puede leerlo.</p><div class="lista">'+
+      Object.keys(OBJ).filter(id=>!OBJ[id].soloPoder||ORIGENES[p.origen].pods.length).map(id=>{
+        const o=OBJ[id],sel=p.obj===id;
+        return '<button class="row block" data-act="obj" data-v="'+id+'" aria-pressed="'+sel+'"><b>'+o.n+'</b><span class="sub">'+o.d+'</span></button>';
+      }).join('')+'</div>';
+  }else{
+    h='<h2>Así llegas al Cónclave</h2>'+vFicha(p,calcRec(p));
+  }
+  const nav='<div class="nav"><button class="btn" data-act="atras">'+(n===1?'Cancelar':'Atrás')+'</button>'+
+    (n<6?'<button id="btnNext" class="btn primary" data-act="sig"'+(valido(n)?'':' disabled')+'>Continuar</button>'
+        :'<button class="btn primary" data-act="prepararUnirse">Enviar mi personaje</button>')+'</div>';
+  return '<main class="wrap"><p class="paso">Paso '+n+' de 6</p>'+errHtml()+h+nav+'</main>';
+}
+function ajustarPuntos(){
+  const p=CR,total=puntosTotal(p);
+  while(sum(p.attrs)-9>total){
+    let mk=null;ATR_ORDEN.forEach(k=>{if(p.attrs[k]>1&&(mk===null||p.attrs[k]>p.attrs[mk]))mk=k;});
+    if(mk===null)break;p.attrs[mk]--;
+  }
+}
+
+/* campaña */
+function vCamp(){
+  if(!ST)return '<main class="wrap"><p class="spin" role="status">Cargando campaña...</p>'+errHtml()+'</main>';
+  const me=yo();
+  if(!me){
+    return '<main class="wrap"><h2>'+esc(ST.nombre)+'</h2><p>Todavía no tienes personaje en esta campaña.</p>'+errHtml()+vEnvio()+
+      (UI.envio?'<div class="nav"><button class="btn" data-act="refrescar">Actualizar</button></div>':'<div class="nav"><button class="btn" data-act="irInicio">Inicio</button><button class="btn" data-act="refrescar">Actualizar</button><button class="btn primary" data-act="nuevoPj">Crear mi personaje</button></div>')+'</main>';
+  }
+  if(ST.estado==='lobby')return vHud()+vLobby();
+  if(ST.estado==='fin')return vHud()+vFinal();
+  const tabs=[['hoy','Hoy'],['mesa','Mesa'],['cronica','Crónica'],['ficha','Ficha']];
+  const cuerpo=UI.tab==='mesa'?vMesa():(UI.tab==='cronica'?vCronica():(UI.tab==='ficha'?vFichaTab():vHoy()));
+  return vHud()+'<main class="wrap"><div class="tabs" role="tablist">'+tabs.map(t=>'<button class="tab" role="tab" data-act="tab" data-v="'+t[0]+'" aria-selected="'+(UI.tab===t[0])+'">'+t[1]+'</button>').join('')+'</div>'+errHtml()+infoHtml()+vEnvio()+
+    (UI.errKey?'<p class="aviso">No pude abrir tus datos privados en este dispositivo. Si juegas desde otro aparato, importa tu llave en la pestaña Ficha.</p>':'')+cuerpo+'</main>';
+}
+function vListaJug(conEstado){
+  return '<div>'+jugadores().map(j=>
+    '<div class="jug">'+seal(j.casa,38)+'<div class="jn"><b>@'+esc(j.login)+' · '+esc(j.nombre)+(lg()===String(j.login).toLowerCase()?' (tú)':'')+'</b><span class="sub">'+ROLES[j.rol].n+' de la Casa '+CASAS[j.casa].n+', Influencia pública '+j.inf+'</span></div>'+
+    (conEstado?'<span class="estado '+(j.actuo?'ok':'pend')+'">'+(j.actuo?'Actuó':'Pendiente')+'</span>':'')+'</div>').join('')+'</div>';
+}
+function urlJuego(){return location.origin+location.pathname.replace(/index\.html$/,'');}
+function vLobby(){
+  const n=jugadores().length,host=esHost();
+  return '<main class="wrap"><h2>'+esc(ST.nombre)+'</h2>'+errHtml()+infoHtml()+vEnvio()+
+    '<p>Enlace para invitar: <code>'+esc(urlJuego())+'</code></p><p class="nota">Tus amigos necesitan una cuenta gratuita de GitHub'+((CFG.permitidos||[]).length?' y estar en la lista <code>permitidos</code> de config.json':'')+'.</p>'+
+    '<h3>Jugadores ('+n+')</h3>'+vListaJug(false)+
+    (host?(UI.envio?'<div class="nav"><button class="btn" data-act="refrescar">Actualizar</button></div>':'<p class="nota" style="margin-top:14px">Cuando estén todos, comienza. Claude inventará el misterio y abrirá el día 1. La campaña dura '+ST.dur+' días.</p><div class="nav"><button class="btn" data-act="refrescar">Actualizar</button><button class="btn primary" data-act="comenzar"'+(n<1?' disabled':'')+'>Comenzar la campaña</button></div>')
+         :'<p class="nota" style="margin-top:14px">Esperando a que el anfitrión comience la campaña.</p><div class="nav"><button class="btn" data-act="refrescar">Actualizar</button></div>')+'</main>';
+}
+function vMesa(){
+  const host=esHost();
+  return '<h2>La mesa</h2>'+vListaJug(true)+
+    '<h3>Invitar</h3><p><code>'+esc(urlJuego())+'</code></p><div class="acciones" style="margin-top:0"><button class="btn" data-act="copiarEnlace">Copiar enlace</button><button class="btn" data-act="refrescar">Actualizar</button></div>'+
+    (host?'<h3>Anfitrión</h3><div class="acciones" style="margin-top:0"><button class="btn" data-act="reiniciar">'+(UI.confReinicio?'Toca de nuevo para reiniciar todo':'Reiniciar campaña')+'</button></div>':'')+
+    '<div class="nav"><button class="btn" data-act="irInicio">Volver al inicio</button></div>';
+}
+function privHtml(x){
+  return '<div class="priv"><span class="sub">Lo que te pasó a ti</span>'+fmt(x.txt||'')+(x.sec?'<span class="sub" style="margin-top:6px">Solo tú lo sabes</span>'+fmt(x.sec):'')+
+    '<div class="chips" style="margin:8px 0 0">'+chips(x.cambios||{})+(x.xp?'<span class="chip xp">+'+x.xp+' XP</span>':'')+'</div>'+
+    (x.leccion?'<span class="sub" style="margin-top:8px">En tu vida'+(x.puntaje!=null?' (negociación: '+x.puntaje+' de 100)':'')+'</span>'+fmt(x.leccion)+(x.mision?'<span class="sub" style="margin-top:6px">Misión real</span>'+fmt(x.mision):''):'')+'</div>';
+}
+function vCronica(){
+  let h='<h2>Crónica</h2>',hay=false;
+  for(let n=ST.dia;n>=1;n--){
+    const d=ST.dias[n];if(!d||!d.res)continue;hay=true;
+    const pv=PRIV&&(PRIV.priv||[]).filter(x=>x.dia===n)[0];
+    h+='<div class="cron"><h3>Día '+n+': '+esc(d.titulo)+'</h3>'+paras(d.res.cronica)+(pv?privHtml(pv):'')+'</div>';
+  }
+  if(!hay)h+='<p>Todavía no ha terminado ningún día. Aquí quedará la historia de lo que ocurra.</p>';
+  return h;
+}
+function vFichaTab(){
+  const me=miPj();
+  let h='<h2>Tu ficha</h2>'+vFicha(me,PRIV&&PRIV.rec)+'<p class="nota" style="margin-top:14px">Nivel '+nivelDe(PRIV&&PRIV.xp)+', '+((PRIV&&PRIV.xp)||0)+' XP.</p>';
+  h+='<h3>Tu llave secreta</h3><p class="nota">Con ella se abren tus datos privados. Está guardada en este dispositivo. Si quieres jugar desde otro aparato, cópiala allí.</p>';
+  h+=UI.verLlave?'<textarea id="llaveTxt" readonly aria-label="Tu llave secreta">'+esc(JSON.stringify(ME.par||{}))+'</textarea><div class="acciones" style="margin-top:8px"><button class="btn" data-act="ocultarLlave">Ocultar</button></div>':'<div class="acciones" style="margin-top:0"><button class="btn" data-act="mostrarLlave">Mostrar mi llave</button></div>';
+  h+='<label class="lbl" for="llaveImp">Importar una llave</label><textarea id="llaveImp" data-keep placeholder="Pega aquí la llave de otro dispositivo"></textarea><div class="acciones" style="margin-top:8px"><button class="btn" data-act="importarLlave">Importar</button></div>';
+  return h;
+}
+function vFinal(){
+  const me=yo(),o=PRIV&&PRIV.obj?OBJ[PRIV.obj]:null;
+  return '<main class="wrap"><h2>Fin de la campaña</h2>'+paras(ST.epilogo||'La historia del Cónclave ha terminado.')+
+    (o&&PRIV.rec?'<div class="vida"><h3>Tu final</h3><p>Nivel '+nivelDe(PRIV.xp)+', '+PRIV.xp+' XP. Tu objetivo era '+o.txt+': '+REC[o.res]+' '+PRIV.rec[o.res]+' de '+o.meta+'.</p></div>':'')+
+    '<h3>Los jugadores</h3>'+vListaJug(false)+'<div class="nav"><button class="btn primary" data-act="irInicio">Volver al inicio</button></div></main>';
+}
+
+/* día actual */
+function vHoy(){
+  const n=ST.dia,d=ST.dias[n],me=yo();
+  if(!d)return '<p class="spin" role="status">El Director de juego todavía prepara el día.</p>';
+  if(UI.accionDia!==n+':'+lg()||!UI.accion){UI.accion=nuevaAccion();UI.accionDia=n+':'+lg();}
+  let h='';
+  const ayer=PRIV&&(PRIV.priv||[]).filter(x=>x.dia===n-1)[0];
+  if(ayer)h+=privHtml(Object.assign({},ayer,{txt:ayer.txt}));
+  h+='<h2>Día '+n+': '+esc(d.titulo)+'</h2><div class="escena">'+paras(d.escena)+'</div>';
+  h+=me.actuo?vAccionHecha():vFormAccion(d,miPj());
+  h+=vCierreDia(n);
+  return h;
+}
+function vAccionHecha(){
+  const x=PRIV&&PRIV.hoy&&PRIV.hoy.dia===ST.dia?PRIV.hoy:null;
+  if(!x)return '<h3>Tu acción</h3><p>Tu jugada quedó registrada.</p>';
+  let h='<h3>Tu acción</h3><p>'+esc(x.desc)+'</p>';
+  if(x.tipo==='amenaza'&&x.combate){
+    h+='<p class="veredicto '+(x.combate.fin==='victoria'?'ok':(x.combate.fin==='derrota'?'no':''))+'">'+({victoria:'Victoria',empate:'Se retiran',huida:'Huiste',derrota:'Caes'})[x.combate.fin]+'</p>'+
+      x.combate.log.map((l,i)=>'<div class="linea"><p>'+esc(l)+'</p></div>').join('');
+  }else{
+    h+='<div class="tirada"><div class="dado">'+x.dado+'</div><p class="calc">Dado '+x.dado+' + '+ATR[x.attr].n+' '+x.base+(x.bono?' + cargo 1':'')+(x.poder?' + poder 2':'')+' = '+x.total+'<br>Dificultad '+x.dif+': <b>'+(x.exito?'sale bien':'sale mal')+'</b></p></div>';
+  }
+  return h+'<p class="nota">Las consecuencias completas se conocerán cuando se cierre el día.</p>';
+}
+function okAccion(){
+  const a=UI.accion;
+  return a.sel!==null&&((a.sel!=='libre'&&a.sel!=='npc')||a.texto.trim().length>=3)&&(!a.obj||!!a.int);
+}
+function vFormAccion(d,me){
+  const a=UI.accion,otros=jugadores().filter(j=>String(j.login).toLowerCase()!==lg()),pw=podsDe(me),rec=PRIV&&PRIV.rec;
+  let h='<h3>Tu acción</h3><div class="lista">'+d.opciones.map((o,i)=>{
+    const bono=bonoRolDe(o.attr,me);
+    return '<button class="row block opc" data-act="selOp" data-v="'+i+'" aria-pressed="'+(a.sel===i)+'"><span class="ot">'+esc(o.t)+'</span><span class="om">'+ATR[o.attr].n+' '+A(o.attr,me)+(bono?' +1 de tu cargo':'')+', dificultad '+o.dif+(o.riesgo?'. '+esc(o.riesgo):'')+'</span></button>';
+  }).join('')+
+  (d.npc?'<button class="row block opc" data-act="selOp" data-v="npc" aria-pressed="'+(a.sel==='npc')+'"><span class="ot">Hablar con '+esc(d.npc.nombre)+'</span><span class="om">'+esc(d.npc.titulo)+'. '+esc(d.npc.descripcion)+' Claude evalúa cómo negocias.</span></button>':'')+
+  (d.amenaza?'<button class="row block opc poder" data-act="selOp" data-v="amenaza" aria-pressed="'+(a.sel==='amenaza')+'"><span class="ot">Enfrentar: '+esc(d.amenaza.nombre)+'</span><span class="om">'+esc(d.amenaza.descripcion)+' Combate automático según tu postura. Cuesta Vigor y Éter.</span></button>':'')+
+  '<button class="row block opc" data-act="selOp" data-v="libre" aria-pressed="'+(a.sel==='libre')+'"><span class="ot">Otra cosa</span><span class="om">Describe lo que quieres hacer. Claude decide qué consecuencias tiene.</span></button></div>';
+  if(a.sel==='libre'||a.sel==='npc'){
+    h+='<label class="lbl" for="libre">'+(a.sel==='npc'?'¿Qué le dices o le propones?':'¿Qué haces?')+'</label><textarea id="libre" data-keep maxlength="300" placeholder="Escribe en una o dos frases...">'+esc(a.texto)+'</textarea>'+
+      '<span class="lbl">Con qué atributo</span><div class="grid">'+ATR_ORDEN.map(k=>'<button class="chipb" data-act="selAttr" data-v="'+k+'" aria-pressed="'+(a.attr===k)+'">'+ATR[k].n+' '+A(k,me)+'</button>').join('')+'</div><p class="nota">Dificultad 7.</p>';
+  }
+  if(a.sel==='amenaza'){
+    const posts=POSTURAS.filter(p=>p.id!=='huir').concat(pw.map(id=>posturaPoder(id))).concat(POSTURAS.filter(p=>p.id==='huir'));
+    h+='<span class="lbl">Tu postura en el combate</span><div class="grid">'+posts.map(p=>'<button class="chipb" data-act="selPostura" data-v="'+p.id+'" aria-pressed="'+(a.postura===p.id)+'"'+(p.coste&&rec&&rec.eter<p.coste?' disabled':'')+'>'+p.t+(p.coste?' (−'+p.coste+' Éter)':'')+'</button>').join('')+'</div><p class="nota">Usarás esta postura en cada ronda (hasta 5).'+(a.postura&&a.postura.indexOf('poder:')===0?' Si te quedas sin Éter, golpearás con tu arma.':'')+'</p>';
+  }
+  if(a.sel!==null&&otros.length){
+    h+='<span class="lbl">Con otro jugador (opcional)</span><div class="grid">'+otros.map(j=>'<button class="chipb" data-act="selObj" data-v="'+esc(String(j.login).toLowerCase())+'" aria-pressed="'+(a.obj===String(j.login).toLowerCase())+'">'+esc(j.nombre)+'</button>').join('')+'</div>';
+    if(a.obj){
+      const oj=ST.jugadores[a.obj];
+      h+='<span class="lbl">Qué intentas con '+esc(oj?oj.nombre:'esa persona')+'</span><div class="grid">'+Object.keys(INT).map(k=>'<button class="chipb" data-act="selInt" data-v="'+k+'" aria-pressed="'+(a.int===k)+'">'+INT_TXT[k]+'</button>').join('')+'</div>';
+    }
+  }
+  if(pw.length&&a.sel!==null&&a.sel!=='amenaza'){
+    h+='<span class="lbl">Poder (opcional, +2 a la tirada)</span><div class="grid">'+pw.map(id=>'<button class="chipb" data-act="togPoder" data-v="'+id+'" aria-pressed="'+(a.poder===id)+'"'+(rec&&rec.eter<POD[id].coste?' disabled':'')+'>'+POD[id].n+' (−'+POD[id].coste+' Éter)</button>').join('')+'</div>';
+  }
+  if(!UI.envio)h+='<div class="nav"><button id="btnAccion" class="btn primary" data-act="prepararAccion"'+(okAccion()?'':' disabled')+'>Confirmar acción</button></div><p class="nota">Tu jugada viaja cifrada: los demás solo verán que ya actuaste.</p>';
+  return h;
+}
+function vCierreDia(n){
+  const js=jugadores(),act=js.filter(j=>j.actuo).length,host=esHost();
+  let h='<h3>Cerrar el día</h3><p class="nota">Han actuado '+act+' de '+js.length+' jugadores. Cuando todos actúan, el día se cierra solo.</p>';
+  if(host&&!UI.envio)h+='<div class="acciones" style="margin-top:0"><button class="btn" data-act="cerrarDia">Cerrar el día ahora</button><button class="btn" data-act="refrescar">Actualizar</button></div><p class="nota">Como anfitrión puedes cerrar aunque falte alguien.</p>';
+  else h+='<div class="acciones" style="margin-top:0"><button class="btn" data-act="refrescar">Actualizar</button></div>';
+  return h;
+}
+
+/* ---------- render ---------- */
+function render(){
+  const a=document.activeElement,foco=a&&a.dataset&&a.dataset.act?{act:a.dataset.act,v:a.dataset.v}:null;
+  const keep={};
+  $app.querySelectorAll('[data-keep]').forEach(el=>{keep[el.id]={v:el.value,f:document.activeElement===el,s:el.selectionStart,e:el.selectionEnd};});
+  const m={inicio:vInicio,crear:vCrear,camp:vCamp};
+  let h;
+  try{h=(m[UI.pantalla]||vInicio)();}catch(e){h='<main class="wrap"><h2>Algo salió mal</h2><p>'+esc(e.message)+'</p><div class="nav"><button class="btn primary" data-act="irInicio">Volver al inicio</button></div></main>';}
+  $app.innerHTML=h;
+  $app.querySelectorAll('[data-keep]').forEach(el=>{
+    const k=keep[el.id];
+    if(k&&k.v&&!el.value)el.value=k.v;
+    if(k&&k.f){el.focus({preventScroll:true});try{el.setSelectionRange(k.s,k.e);}catch(e){}}
+  });
+  if(foco&&!(keep[document.activeElement&&document.activeElement.id])){
+    const el=$app.querySelector('[data-act="'+foco.act+'"]'+(foco.v!==undefined?'[data-v="'+foco.v+'"]':''));
+    if(el&&!el.disabled)el.focus({preventScroll:true});
+  }
+}
+function ir(p){UI.pantalla=p;UI.err='';UI.info='';render();window.scrollTo(0,0);}
+
+/* ---------- acciones ---------- */
+async function asegurarPar(){
+  if(!ME.par){ME.par=await Cripto.generarPar();lsSet(K_PAR,ME.par);}
+}
+async function prepararUnirse(){
+  const p=CR;
+  for(let i=1;i<=5;i++)if(!valido(i)){UI.err='Faltan datos en el paso '+i+'.';render();return;}
+  const err=validaPersonaje({nombre:p.nombre,casa:p.casa,origen:p.origen,rol:p.rol,attrs:p.attrs,soc:p.soc,obj:p.obj});
+  if(err){UI.err=err;render();return;}
+  try{
+    await asegurarPar();
+    const sec=await Cripto.cifrar(CFG.clavePublica,{soc:p.soc,obj:p.obj});
+    UI.pantalla='camp';
+    crearEnvio('[unirse] '+ME.login,{tipo:'unirse',nombre:p.nombre.trim(),casa:p.casa,origen:p.origen,rol:p.rol,attrs:p.attrs,pub:ME.par.publica,sec},{tipo:'unirse'});
+  }catch(e){UI.pantalla='crear';UI.err='No pude preparar tu personaje: '+e.message;render();}
+}
+async function prepararAccion(){
+  const a=UI.accion;if(!okAccion())return;
+  try{
+    const enc=await Cripto.cifrar(CFG.clavePublica,{texto:a.texto.trim().slice(0,300),attr:a.attr,obj:a.obj||null,int:a.obj?a.int:null,poder:(a.sel!=='amenaza'&&a.poder)||null,postura:a.sel==='amenaza'?a.postura:null});
+    crearEnvio('[accion] día '+ST.dia+' '+ME.login,{tipo:'accion',dia:ST.dia,sel:a.sel,enc},{tipo:'accion',dia:ST.dia});
+  }catch(e){UI.err='No pude cifrar tu jugada: '+e.message;render();}
+}
+async function copiar(txt,msg){
+  try{await navigator.clipboard.writeText(txt);UI.info=msg;}catch(e){UI.info='Copia el texto a mano: '+txt;}
+  render();
+}
+const ACC={
+  refrescar(){UI.err='';cargar();},
+  guardarLogin(){
+    const v=($('login')&&$('login').value||'').trim().replace(/^@/,'');
+    if(!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(v)){UI.err='Escribe tu usuario de GitHub, solo letras, números y guiones.';render();return;}
+    ME.login=v;lsSet(K_LOGIN,v);UI.loginTmp='';UI.err='';descifrarMio().then(()=>render());
+  },
+  cambiarLogin(){ME.login='';lsSet(K_LOGIN,'');PRIV=null;privDe='';UI.pantalla='inicio';render();},
+  irInicio(){UI.envio=null;ir('inicio');},
+  entrarCamp(){ir('camp');},
+  nuevoPj(){CR=nuevoCR();ir('crear');},
+  casa(v){CR.casa=v;render();},
+  origen(v){CR.origen=v;if(!ORIGENES[v].pods.length&&CR.obj&&OBJ[CR.obj].soloPoder)CR.obj=null;ajustarPuntos();render();},
+  rol(v){CR.rol=v;render();},
+  soc(v){CR.soc=v;render();},
+  obj(v){CR.obj=v;render();},
+  attr(v){
+    const q=v.split(':'),k=q[0],d=Number(q[1]),a=CR.attrs,usados=sum(a)-9;
+    if(d>0&&(usados>=puntosTotal(CR)||a[k]>=5))return;
+    if(d<0&&a[k]<=1)return;
+    a[k]+=d;render();
+  },
+  sig(){if(valido(CR.paso)){CR.paso++;render();window.scrollTo(0,0);}},
+  atras(){
+    if(CR.paso===1){ir(yo()||UI.envio?'camp':'inicio');return;}
+    CR.paso--;render();window.scrollTo(0,0);
+  },
+  prepararUnirse,
+  cancelarEnvio(){UI.envio=null;render();},
+  tab(v){UI.tab=v;render();window.scrollTo(0,0);},
+  selOp(v){const a=UI.accion;a.sel=(v==='libre'||v==='npc'||v==='amenaza')?v:Number(v);render();},
+  selAttr(v){UI.accion.attr=v;render();},
+  selPostura(v){UI.accion.postura=v;render();},
+  selObj(v){UI.accion.obj=UI.accion.obj===v?null:v;if(!UI.accion.obj)UI.accion.int=null;render();},
+  selInt(v){UI.accion.int=v;render();},
+  togPoder(v){UI.accion.poder=UI.accion.poder===v?null:v;render();},
+  prepararAccion,
+  comenzar(){crearEnvio('[comenzar] campaña',{tipo:'comenzar'},{tipo:'comenzar'});},
+  cerrarDia(){crearEnvio('[cerrar] día '+ST.dia,{tipo:'cerrar',dia:ST.dia},{tipo:'cerrar',dia:ST.dia});},
+  reiniciar(){
+    if(!UI.confReinicio){UI.confReinicio=true;render();return;}
+    UI.confReinicio=false;crearEnvio('[reiniciar] campaña',{tipo:'reiniciar'},{tipo:'reiniciar'});
+  },
+  copiarEnlace(){copiar(urlJuego(),'Enlace copiado.');},
+  mostrarLlave(){UI.verLlave=true;render();},
+  ocultarLlave(){UI.verLlave=false;render();},
+  async importarLlave(){
+    const t=($('llaveImp')&&$('llaveImp').value||'').trim();
+    try{
+      const par=JSON.parse(t);
+      if(!par||par.kty!=='RSA'&&!(par.privada&&par.privada.kty==='RSA'))throw new Error('formato');
+      const priv=par.privada||par;
+      ME.par={publica:Cripto.publicaDe(priv),privada:priv};lsSet(K_PAR,ME.par);
+      privDe='';await descifrarMio();
+      UI.info=UI.errKey?'La llave no corresponde a tu personaje.':'Llave importada.';
+    }catch(e){UI.err='Esa llave no es válida.';}
+    render();
+  }
+};
+$app.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');
+  if(!b||b.disabled)return;
+  const f=ACC[b.dataset.act];if(f)f(b.dataset.v,b);
+});
+$app.addEventListener('input',e=>{
+  const id=e.target.id;
+  if(id==='nombre'){CR.nombre=e.target.value.slice(0,24);const bn=$('btnNext');if(bn)bn.disabled=!valido(1);}
+  else if(id==='login')UI.loginTmp=e.target.value;
+  else if(id==='libre'&&UI.accion){UI.accion.texto=e.target.value;const b=$('btnAccion');if(b)b.disabled=!okAccion();}
+});
+
+/* ---------- arranque ---------- */
+render();
+cargar();
+setInterval(()=>{if(!document.hidden&&UI.pantalla!=='crear')cargar();},30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&UI.pantalla!=='crear')cargar();});
+})();
+</script>
+</body>
+</html>
