@@ -1,9 +1,9 @@
 {
  "v": 1,
- "estado": "lobby",
+ "estado": "abierto",
  "nombre": "La Sucesión",
  "dur": 7,
- "dia": 0,
+ "dia": 1,
  "host": "patricioromov-ai",
  "jugadores": {
   "patricioromov-ai": {
@@ -38,7 +38,52 @@
    "inf": 4
   }
  },
- "dias": {},
+ "dias": {
+  "1": {
+   "n": 1,
+   "titulo": "El Cuervo de Medianoche",
+   "escena": "Eres convocado al Archivo Vael antes del amanecer. Tu Prima Silene, jefa de Inteligencia, te muestra un cristal de datos incinerando: alguien borró los registros de seguridad de las 03:47 a las 04:19. No del servidor público—del privado. Quien lo hizo conocía los protocolos internos. Silene tiembla ligeramente, cosa que nunca hace. «Encontramos una pluma», dice, «una de las del dron-cuervo. Estaba marcada con un sello que reconozco. Sammaél. Es de Los Serafines». No debería saber eso. Alguien dentro de tu sociedad secreta actuó sin orden. Y tu Prima acaba de decirte que lo sabe.",
+   "opciones": [
+    {
+     "t": "Negarle todo; mentir sobre el sello y ofrecerle créditos",
+     "attr": "elo",
+     "dif": 7,
+     "riesgo": "Silene pierde confianza; ella ya investigaba antes de llamarte"
+    },
+    {
+     "t": "Acceder a los datos destruidos usando métodos éter para reconstruir",
+     "attr": "sab",
+     "dif": 6,
+     "riesgo": "La reconstrucción revela más de lo que quieres saber sobre ti mismo"
+    },
+    {
+     "t": "Confesar parcialmente: admitir celda rogue, ofrecer encontrarla",
+     "attr": "des",
+     "dif": 5,
+     "riesgo": "Silene te creerá, pero cobrará un precio: información sobre los Serafines"
+    },
+    {
+     "t": "Usar poder psíquico para sondear sus miedos reales sobre este asunto",
+     "attr": "psi",
+     "dif": 8,
+     "riesgo": "Descubrirás verdades que cambiarán cómo la ves; ella lo sentirá"
+    },
+    {
+     "t": "Exigir ver la pluma; inspeccionar su origen y falsedad con maña",
+     "attr": "com",
+     "dif": 7,
+     "riesgo": "Si es auténtica, tu confrontación cierra puertas; si es falsa, quien la plantó sabe mucho"
+    }
+   ],
+   "npc": {
+    "nombre": "Silene Vael",
+    "titulo": "Prima. Directora de Inteligencia de Casa Vael",
+    "descripcion": "Pómulos altos, iris cibernético (implante de escaneo multi-espectral), viste capa de seda gris sobre armadura de luz. Mueve poco, habla menos, pero cada palabra pesa como acero."
+   },
+   "amenaza": null,
+   "res": null
+  }
+ },
  "epilogo": "",
- "actualizado": "2026-09-19T22:08:22.219Z"
+ "actualizado": "2026-09-19T22:10:11.370Z"
 }
