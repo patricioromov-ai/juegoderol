@@ -3,7 +3,7 @@
  "estado": "abierto",
  "nombre": "La Sucesión",
  "dur": 7,
- "dia": 1,
+ "dia": 2,
  "host": "patricioromov-ai",
  "jugadores": {
   "patricioromov-ai": {
@@ -33,9 +33,9 @@
      "encrypt"
     ]
    },
-   "blob": "zD+0rsJrGQ4ouot1rUgre/4NNZbbw6Qc2JtoRVL21QlYLxlHu0EMlqhDdjqkqT0xHzEd2df+TbrHJ4e+zkEDr+CxqOSHKyuV8ONm219pjQ1PP2O7eFLOg7EBOh/b6fDiKezoxbfnklskkkNj1r83OYMH1XLydCc6t5xR/nnK4Of4U8s/pZQ+MhXQXVMmQvspfPl+l8gBJojVtvCq9G7IzDDZCBCDyBJF+C4tSx+IfUVNVgOmXA8+XUjIxMZOi4mPlZZUQHFgC5C70RP7Z0/AyuhHeS8XUhjFQf5Qel5r0suqmB4wV6yoq/y5u86nxgZ6VZiih1vnftALtobtiLEcvQ==.7BGrSntyJSFBUyub.wQbRpQUhMDYKNgoNM9w9U4sOGLRue8bSxSwotx5qOtb9VdpGTGSanIfRQZvqvOfmTej3nu98hVGnr4vxwYeQrh9PWSPERiHw+BMKx+FQatSJTiwlwcCCN6XV1OYCLRUu+Mssze6GT9alSidgPVbtTpWDkCONyCnJO4Ld40gqE3bCo9cq878et5jqeheo+DPiagk/STC+9+JVGq31cgUizsZS8Z5pxQ==",
+   "blob": "LYvhjZVSMOu4luKfh7vO138d0FE/ZvJT7SwsI5GGX07O7e+EmNicgY1KfFSrK1GnrqO0AO+jHA8L0fZvmvEV6T2uuNMUkt+pAO2dSdW605vSDUvnmsyqYNl2lYN482M1UjpfHGIr+FlmD+Cxc/Hs2yZRJ8eN9CXWimpFXf6DH6aAbtzmw4WvV6VnadXv+GSX8MvK2hlKR1EQ03N6LK8QwNi+92C8XP+lmEiOlB3DnjW6vDTGHfTBBZO5KexxXOHB35VgydPDab/wPugKjRAoUMF2odf2oCAByfoY6vG8CZ4gfjf/UWOCx30xuQChiwhzy2zCmfWx4/LqvYlopNdAbQ==.XUZykwFurpkNUY9w.wT6kmUAZTGHpfraHasjTqIskP3xtKZbL1NA6Lcq+0hCLazLdgddxERnO7nVuYHyQWBvYefsPLfD/ev/OVZBPxk44AkiKnub1LabCQ8aNluVzY0KMILkpS7Q2gjnxRgPU88j1SWNHdQ009nPf78d612TO/wqm4u661hGH6f24VOopZyFYCXrsnvafZ40/0gCl+f8GcOkCv4kvmAxqS3k7oIRrV2KKro1Kkju1zpE/sPR8KpFYDvOaF0wzuQtekugaVsrf03Jt2cY6bLPJH3DqGxDCYGHc8FPWZCPfgWzww/fSLtB8J5blXYk+HIqlx8g1DhABuhUCH43JybOWnNrCGqM/vtBu++Xy5cmFAQkKA7TTWlWR3MY++xjmzQbS0yU0/ohdzgg3bYHxqt8XNWFW2vVeij4MOkw3OHDKIQC+y5QT8Dxxtnk86jQ0joVzsSESNFxLyHGcGmuz3qz7rwOsYpfO9AuCRvGM57AJ/ovFhFRe7NOl5PRboIpBMGeacxAAUGENTpp8CPPiE2k8x7OoPU+KDA4yXDtoi7hs+lWqWxFlclgwWSAGZtyisYeOxd6rENMKf4hTsz+5vY3r/P1Cn32SP2g3x/OpwPRJ/Av6kmuma37DVLISFLbxPXA0XmRCQ1kO1tZbDQQlogao3qJ89MfHMbTiB8xQiFv59hxxQWryLeKYPZO1MBmsn6EetR9QquTr7A6JL4X/u2ztsg38AAB0rJ4Z1tFrzzUkvR4gv1WwU7NzypX5Fi+7n8e4/KjyFi6IzhAtx4myNOS44vhLNcdhZmaGnUvC5SiAoJZu8s4PfM9XJdLybr+oYsHtCXecJqNX622hJRpapuXMnpeKTIHyjdGZJNeu0GIgyN4ewL5DOXW1BzUXDn4WTnTLGjh6D7nDJ2+emZMIP/5Vpc31XO6s3b4XE85bpLBnm6IEZmEdLAttRffK+1n9UMpdnG1anJuFsVhsohazKJgiJUS2ruyp952rbSGEDnShJUucgg9zH/9kJuZWQhle9/pSV7/VZRYhGyHeC2GEf/I9l9Wv6VTH4Ca69bE=",
    "actuo": false,
-   "inf": 4
+   "inf": 3
   }
  },
  "dias": {
@@ -81,9 +81,61 @@
     "descripcion": "Pómulos altos, iris cibernético (implante de escaneo multi-espectral), viste capa de seda gris sobre armadura de luz. Mueve poco, habla menos, pero cada palabra pesa como acero."
    },
    "amenaza": null,
+   "res": {
+    "cronica": "El Archivo Vael arde en silencio digital. Prima Silene muestra a Sammaél un cristal de datos destruyéndose: alguien borró los registros privados de seguridad en el intervalo exacto de la muerte del Soberano. No fue un hack externo; quien lo hizo conocía los protocolos internos de Casa Vael. Luego, Silene extrae una pluma negra, intacta, marcada con un sello inconfundible: Los Serafines de Acero. Su voz tiembla cuando lo dice. Algo dentro de la propia sociedad secreta de Sammaél actuó sin orden, robó la Llave y borró las pruebas. Y ahora su Prima sabe que Los Serafines existen. La mañana se enfría.",
+    "hechos": [
+     "Los registros privados de Casa Vael fueron borrados por alguien con acceso interno, entre las 03:47 y 04:19.",
+     "Una pluma de dron-cuervo marcada con el sello de Los Serafines de Acero fue hallada en la Torre Alta.",
+     "Prima Silene, jefa de Inteligencia de Casa Vael, sabe que Los Serafines existen y está vinculada a ellos.",
+     "Una célula de Los Serafines robó la Llave sin orden de su cúpula, buscando coronar un candidato que permita acceso a los servidores del Panteón."
+    ]
+   }
+  },
+  "2": {
+   "n": 2,
+   "titulo": "El Precio del Silencio",
+   "escena": "Silene cierra la puerta del Archivo. Sus manos descansan sobre la mesa de datos, serenas. «Tenemos un problema compartido», dice. «Alguien dentro de Los Serafines actuó sin autorización. Pero eso es tu asunto, no el mío. Lo mío es que esos registros borrados nos incriminan a ambos si alguien más los reconstruye». Su sonrisa es fría. «Propongo un acuerdo. Tú encuentras a esa célula y recuperas la Llave. Yo mantengo el silencio. Pero si no lo haces en tres días, voy directo al Cónclave». No es una amenaza. Es un hecho. Silene siempre cumple sus palabras.",
+   "opciones": [
+    {
+     "t": "Negociar con Silene: ofrecerle acceso a secretos de Los Serafines a cambio de su lealtad eterna.",
+     "attr": "com",
+     "dif": 8,
+     "riesgo": "Silene puede exigir un precio mayor: la identidad de tu candidato, tu voto, o ambos."
+    },
+    {
+     "t": "Rastrear internamente: usar contactos en Los Serafines para encontrar quién robó la Llave sin orden.",
+     "attr": "des",
+     "dif": 7,
+     "riesgo": "La célula descubrirá que los buscas. Pueden actuar primero, acusándote de sabotaje ante la cúpula."
+    },
+    {
+     "t": "Hackear los respaldos de Silene: buscar si ella tiene copias del registro borrado y qué pretende con ellas.",
+     "attr": "sab",
+     "dif": 6,
+     "riesgo": "Silene detectará el intento. La confianza se rompe. Te declarará enemiga pública de Casa Vael."
+    },
+    {
+     "t": "Confrontar a Silene con una verdad: revelarle que sabes que ella tiene entrenamiento mental profesional y preguntarle para quién trabaja.",
+     "attr": "psi",
+     "dif": 9,
+     "riesgo": "Silene responde con violencia o desaparece. Casa Vael entra en caos interno tres días antes del Cónclave."
+    },
+    {
+     "t": "Aceptar el acuerdo e ir directo a Morvain: usar el borrado de registros como evidencia de que alguien más tiene acceso al protocolo interno.",
+     "attr": "elo",
+     "dif": 7,
+     "riesgo": "Morvain puede ser el responsable del borrado. Lo acusarás directamente y él responderá con un movimiento letal."
+    }
+   ],
+   "npc": {
+    "nombre": "Prima Silene",
+    "titulo": "Jefa de Inteligencia, Casa Vael",
+    "descripcion": "Cabello plateado recogido, ojos grises como vidrio templado, uniforme de datos con insignias de rango. Cada movimiento es preciso, sin emoción aparente."
+   },
+   "amenaza": null,
    "res": null
   }
  },
  "epilogo": "",
- "actualizado": "2026-09-19T22:10:11.370Z"
+ "actualizado": "2026-09-19T22:12:15.975Z"
 }
