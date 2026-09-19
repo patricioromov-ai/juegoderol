@@ -3,7 +3,7 @@
  "estado": "abierto",
  "nombre": "La Sucesión",
  "dur": 7,
- "dia": 2,
+ "dia": 3,
  "host": "patricioromov-ai",
  "jugadores": {
   "patricioromov-ai": {
@@ -33,9 +33,9 @@
      "encrypt"
     ]
    },
-   "blob": "LYvhjZVSMOu4luKfh7vO138d0FE/ZvJT7SwsI5GGX07O7e+EmNicgY1KfFSrK1GnrqO0AO+jHA8L0fZvmvEV6T2uuNMUkt+pAO2dSdW605vSDUvnmsyqYNl2lYN482M1UjpfHGIr+FlmD+Cxc/Hs2yZRJ8eN9CXWimpFXf6DH6aAbtzmw4WvV6VnadXv+GSX8MvK2hlKR1EQ03N6LK8QwNi+92C8XP+lmEiOlB3DnjW6vDTGHfTBBZO5KexxXOHB35VgydPDab/wPugKjRAoUMF2odf2oCAByfoY6vG8CZ4gfjf/UWOCx30xuQChiwhzy2zCmfWx4/LqvYlopNdAbQ==.XUZykwFurpkNUY9w.wT6kmUAZTGHpfraHasjTqIskP3xtKZbL1NA6Lcq+0hCLazLdgddxERnO7nVuYHyQWBvYefsPLfD/ev/OVZBPxk44AkiKnub1LabCQ8aNluVzY0KMILkpS7Q2gjnxRgPU88j1SWNHdQ009nPf78d612TO/wqm4u661hGH6f24VOopZyFYCXrsnvafZ40/0gCl+f8GcOkCv4kvmAxqS3k7oIRrV2KKro1Kkju1zpE/sPR8KpFYDvOaF0wzuQtekugaVsrf03Jt2cY6bLPJH3DqGxDCYGHc8FPWZCPfgWzww/fSLtB8J5blXYk+HIqlx8g1DhABuhUCH43JybOWnNrCGqM/vtBu++Xy5cmFAQkKA7TTWlWR3MY++xjmzQbS0yU0/ohdzgg3bYHxqt8XNWFW2vVeij4MOkw3OHDKIQC+y5QT8Dxxtnk86jQ0joVzsSESNFxLyHGcGmuz3qz7rwOsYpfO9AuCRvGM57AJ/ovFhFRe7NOl5PRboIpBMGeacxAAUGENTpp8CPPiE2k8x7OoPU+KDA4yXDtoi7hs+lWqWxFlclgwWSAGZtyisYeOxd6rENMKf4hTsz+5vY3r/P1Cn32SP2g3x/OpwPRJ/Av6kmuma37DVLISFLbxPXA0XmRCQ1kO1tZbDQQlogao3qJ89MfHMbTiB8xQiFv59hxxQWryLeKYPZO1MBmsn6EetR9QquTr7A6JL4X/u2ztsg38AAB0rJ4Z1tFrzzUkvR4gv1WwU7NzypX5Fi+7n8e4/KjyFi6IzhAtx4myNOS44vhLNcdhZmaGnUvC5SiAoJZu8s4PfM9XJdLybr+oYsHtCXecJqNX622hJRpapuXMnpeKTIHyjdGZJNeu0GIgyN4ewL5DOXW1BzUXDn4WTnTLGjh6D7nDJ2+emZMIP/5Vpc31XO6s3b4XE85bpLBnm6IEZmEdLAttRffK+1n9UMpdnG1anJuFsVhsohazKJgiJUS2ruyp952rbSGEDnShJUucgg9zH/9kJuZWQhle9/pSV7/VZRYhGyHeC2GEf/I9l9Wv6VTH4Ca69bE=",
+   "blob": "XIgqH6TaAClnrRs049lpfyY20ggWX5Lm9EoidPYUk1vyj6eBauO5isNXtFJou1FKdFunVZGEcLLtfXt8dnpJZzgTiqe8FMQY/qVOmzwYXD02tMXecFaX7zvc+C/AOUgt+n7cywpcr4bFlYO1pb0sAq6wH+76+yuJpM3lYnG4cFO/qkaV2C+meSFtdqJeH6IpwM2xhycuBQDGOj0d5N57TLq1/WKnPhhY8oVeCopO26cbtwTihopwkFVaW/c54wR8PdhtlHiFkWrgbqmQ8oQ3UU4h1W3PW2x6MiE+w0Nqm6bVc4sHHu0qT40qFkf1lEqPxIpm2HkzlkcftQjAMlRVoA==.Q9NX8cEAY5mEyu0G.agTXFFHD2Cq6RAxQjRXczWTo3s5xWzTI6CSD8n9EtskWZqF7ZiWXz25PoMrBnQNhI2Z6ybRH1jaGvuUpWJheW9twU+ykcDNJoZgHmA1CUfqfEMqdUkKf0/k//iHdo65J9Mu4zoZK3KGb4c3s/VZRn9Bc8zlBciLENqY99aRYmyvuz2ChQb6DUFNQwpL5bFaVq48qc0vKodA8eFSR8z3cjaoI7oQcrf9pfRSfe/iz0xvti+q1jRpI8ptghcs/jaCgo8FWLEZP/QscOqEvI0F4VA17Oj4eDMEmYg9osjMI9/KvbxQyNPWxKgCPspMLKlksrObX/B1FBfn2bVFN2LhTiQBddqRVjlOIJqNnHxsOjKAsMzYspbf4p+LrsReCXQgGw43kPhJAfF6u5JpqdwIao13mTAMgEEEAFw8DCZ3LDeB/xAe8cbzjZMcPCbwRStRrb9S1cJywN0GWn77aEhl9P9hiI0Rdm81EFtC7yuMhZ9ephjJ6cHUiuY27LZ3lvUCEOOzaxn1xTro+uu+TMqpIPvXHXT3ddxylt5+PUhrAq5LdnjC4YbkB2zBV2v9ZZreAd8Ip+ipaqzJKDujnM0KeUQPXRQKcNiCthpH4WotyuQHRgzb7EnLetFx4ZQzsb3DwvykkTDZujjY/A7M4cVSjBsBikYuRBYOmMGYA109qZwg7zVdp19/hnq2jIsi0WsFpcZiSGaa4T/8uz1mIkKJSUFrPhBQkdRkYyBtnzLexmC4YaGUUeBuuvv3gIe1NiBjPnRTK8cnF4vXj2MTJ0RP0e+Cu4h+WGm543O5kkjcIJtzWTgtsxdLPTTjI8SjvST6vQqhss9IrNckALkHo7Yt+bblqGphvTw57F0c7E+SFSwedutBW6FP2Viw/ZvHKFLwrfGg+RQT6qWpot6jI5jx4+tZGU+EMBWNRmUrsRzLcud5sknz/68cRUG6KxYwGWfajk+36qCC0cDclKMBki+qdk52fHvjE1XG+JEmI2EN/Y8TxlnryDJ4PEOlh7mUNLoQLNlBxl6SLBwn9omJF1A+3qhT3/6AB0ttBRGOGQBbqsYmwVuHhJ2MHyb+pijsVYxYg+AuBTa7Vhs5IoC4lPlyPew6xvzkPkSKFNCw0e9M2UoRc456IhJ/ZBjtIE+VhsLn/G27Grw7t7sKW06eahNzhcrMxVgAYsbmHmCzZXR9+A+gcfuM+MLYTith81oS7nX0KNbc8FrP0f9j1U+/5CRJ7bo1cPaQGfc8DcGMmBUK34eDHKvXU6wihe49sPussUxS0NbFITB2WfuSmDQhMCNy4T3AvgpbGbjDFvLpeDGR4XyaDqW64HCi8VvhMSrC/wS6M3BMdGmYVdU8ioR3vZkXc9UNf/Njh2E407Vi2vXZajVE1GHTjGg2iXWJVnBsHjCjm/U5DbZHBhfX+f3lub3+ORyDyq2amtfrmmMc7U3jIiT9K+xk9CcrpBpnNu8I3KbGYm5Zf0I4EFzHDnuKJnBDR18yuhjKyUdrycBiRJA1x7rHlJ+92jkomGGbnMuITXx4dnEpn6uzUZ9fJMZZAjnz5fKqyZsT0llxbyR3I4Xmxmg0UMpqzRBRubQgISp8ELU3KG5NAaJewlAFL8gGFQwa8+qfj2o1WC/V/RYPLfzbkj5uIEMNohWVGPj+j61AB2c0ULRfTxtS/XSDFnNw/K6XkfvVD8UCqFKf6JDFX/dX0bWO/+LBkqaG7X1/r6UmHInlqob313VXZWrh9ESC07ZpSorB5eaTF9q5jzt9sxo4z+08Ctk5m7lb4CZKLYftjqjOcZ58JnG+rookcGHkK0IyTH07SYItd+BGrLWOYNWXMyWurcq/u3U6EfjC4JJ8TzzFbffHEfqMG",
    "actuo": false,
-   "inf": 3
+   "inf": 2
   }
  },
  "dias": {
@@ -133,9 +133,61 @@
     "descripcion": "Cabello plateado recogido, ojos grises como vidrio templado, uniforme de datos con insignias de rango. Cada movimiento es preciso, sin emoción aparente."
    },
    "amenaza": null,
+   "res": {
+    "cronica": "Sammaél se presenta ante el Patriarca Morvain en los Salones de Piedra de Casa Thul, las paredes palpitando con datos holográficos. Argumenta que el borrado de registros internos de Vael prueba una infiltración externa, no una traición interna. Morvain lo escucha con los ojos entornados, los dedos tamborileando sobre el brazo de su sillón de mármol negro. 'Interesante teoría, Sammaél. Pero tus datos son incompletos.' El Patriarca se inclina hacia delante. 'He sabido que Prima Silene ha estado haciendo preguntas sobre ciertos documentos. ¿Debería preocuparme de que Casa Vael se derrumbe por sus propias grietas?' El mensaje es claro: Morvain ya sabe más de lo que Sammaél creía. La visita no fue un triunfo, sino una exposición. Esa tarde, los mercados de apuestas políticas favorecen cada vez más a candidatos fuera del trío esperado.",
+    "hechos": [
+     "El Patriarca Morvain conoce la existencia de Prima Silene y sus investigaciones sobre los registros borrados.",
+     "Los mercados de apuestas ahora favorecen al Obispo Veren (Casa Thul) como candidato viable, ganando posiciones rápidamente.",
+     "Una célula de hackers telépatas fue detectada intentando acceder a los servidores del Panteón durante la madrugada; fueron repelidos.",
+     "Prima Silene tiene un plazo de tres días para que Sammaél recupere la Llave, o revelará todo al Cónclave."
+    ]
+   }
+  },
+  "3": {
+   "n": 3,
+   "titulo": "Día 3: El Ataque de Plomo",
+   "escena": "A las 06:33, las alarmas del Panteón suenan en toda la Arcópolis. No es un ataque de datos: es violencia de carne y acero. Tres drones-cuervo blindados impactaron contra la Torre de los Servidores, volando vidrio y código. Los Serafines de Acero reclaman la responsabilidad en un comunicado encriptado: 'Abriremos las puertas divinas'. Silene te llama personalmente. 'Tienes 48 horas. La célula está actuando a cielo abierto. Si no la encuentras y la neutralizas, la Llave ya no importará: el Cónclave cancelará la sucesión y declarará guerra interna.' Su voz no tiembla, pero hay peso en el silencio entre sus palabras.",
+   "opciones": [
+    {
+     "t": "Rastrear los drones-cuervo usando datos de tráfico aéreo interno.",
+     "attr": "sab",
+     "dif": 7,
+     "riesgo": "Los drones fueron lanzados desde un punto ciego; encontrarás una pista falsa que te alejará de la célula real."
+    },
+    {
+     "t": "Contactar a tu red de informantes de Los Serafines para encontrar a los renegados.",
+     "attr": "psi",
+     "dif": 6,
+     "riesgo": "Alguien en tu red es un doble agente; revelarás tu búsqueda a tus enemigos antes de encontrar a la célula."
+    },
+    {
+     "t": "Ofrecerle a Morvain que negocie con la célula a cambio de información sobre su ubicación.",
+     "attr": "elo",
+     "dif": 8,
+     "riesgo": "Morvain hará un trato contigo, pero usará la información para controlar la célula, no detenerla."
+    },
+    {
+     "t": "Infiltrar la escena del ataque como investigador de Casa Vael para escuchar chismes de seguridad.",
+     "attr": "des",
+     "dif": 6,
+     "riesgo": "Descubrirás que la célula tiene un contacto dentro de la seguridad de la Torre; alguien de Vael."
+    },
+    {
+     "t": "Usar tu conexión con el Éter para 'sentir' las mentes telépatas de la célula en la Arcópolis.",
+     "attr": "ast",
+     "dif": 7,
+     "riesgo": "El contacto es tan fuerte que una de las mentes renegadas siente tu búsqueda y prepara una trampa."
+    }
+   ],
+   "npc": {
+    "nombre": "Prima Silene",
+    "titulo": "Jefa de Inteligencia de Casa Vael",
+    "descripcion": "Traje de seda negra, ojos plateados de implante cognitivo, una cicatriz blanca en la sien que brilla bajo la luz holográfica."
+   },
+   "amenaza": null,
    "res": null
   }
  },
  "epilogo": "",
- "actualizado": "2026-09-19T22:12:15.975Z"
+ "actualizado": "2026-09-19T22:19:33.568Z"
 }
